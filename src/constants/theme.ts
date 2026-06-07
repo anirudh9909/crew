@@ -14,6 +14,15 @@ export const Colors = {
     backgroundElement: '#F0F0F3',
     backgroundSelected: '#E0E1E6',
     textSecondary: '#60646C',
+    accent: '#E85D4C',
+    fab: '#1B6EF3',
+    badgeFlightStay: '#2B6CB0',
+    badgeVilla: '#6B46C1',
+    badgeExperience: '#C05621',
+    star: '#F5A623',
+    sheetHandle: '#C4C4C4',
+    userBubble: '#1B6EF3',
+    assistantBubble: '#F0F0F3',
   },
   dark: {
     text: '#ffffff',
@@ -21,8 +30,20 @@ export const Colors = {
     backgroundElement: '#212225',
     backgroundSelected: '#2E3135',
     textSecondary: '#B0B4BA',
+    accent: '#FF7B6B',
+    fab: '#3B8FF3',
+    badgeFlightStay: '#63B3ED',
+    badgeVilla: '#B794F4',
+    badgeExperience: '#F6AD55',
+    star: '#F5A623',
+    sheetHandle: '#555555',
+    userBubble: '#1B6EF3',
+    assistantBubble: '#2E3135',
   },
 } as const;
+
+export const CardRadius = 12;
+export const FeedGutter = 16;
 
 export type ThemeColor = keyof typeof Colors.light & keyof typeof Colors.dark;
 

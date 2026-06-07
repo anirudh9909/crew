@@ -1,0 +1,4182 @@
+[
+  {
+    "id": "bundle-001",
+    "destination": "Bali, Indonesia",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 799,
+    "currency": "USD",
+    "durationDays": 3,
+    "rating": 4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew1/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-002",
+    "destination": "Tokyo, Japan",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 974,
+    "currency": "USD",
+    "durationDays": 4,
+    "rating": 4.1,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew2/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-003",
+    "destination": "Santorini, Greece",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 1149,
+    "currency": "USD",
+    "durationDays": 5,
+    "rating": 4.2,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew3/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-004",
+    "destination": "Marrakech, Morocco",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 1174,
+    "currency": "USD",
+    "durationDays": 6,
+    "rating": 4.3,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew4/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-005",
+    "destination": "Kyoto, Japan",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 1349,
+    "currency": "USD",
+    "durationDays": 7,
+    "rating": 4.4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew5/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-006",
+    "destination": "Amalfi Coast, Italy",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 1524,
+    "currency": "USD",
+    "durationDays": 8,
+    "rating": 4.5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew6/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-007",
+    "destination": "Cape Town, South Africa",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 1549,
+    "currency": "USD",
+    "durationDays": 9,
+    "rating": 4.6,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew7/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-008",
+    "destination": "Reykjavik, Iceland",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 1724,
+    "currency": "USD",
+    "durationDays": 10,
+    "rating": 4.7,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew8/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-009",
+    "destination": "Queenstown, New Zealand",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 1899,
+    "currency": "USD",
+    "durationDays": 11,
+    "rating": 4.8,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew9/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-010",
+    "destination": "Lisbon, Portugal",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 1924,
+    "currency": "USD",
+    "durationDays": 12,
+    "rating": 4.9,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew10/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-011",
+    "destination": "Maldives",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 2099,
+    "currency": "USD",
+    "durationDays": 13,
+    "rating": 5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew11/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-012",
+    "destination": "Swiss Alps, Switzerland",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 2274,
+    "currency": "USD",
+    "durationDays": 14,
+    "rating": 4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew12/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-013",
+    "destination": "Tulum, Mexico",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 2299,
+    "currency": "USD",
+    "durationDays": 3,
+    "rating": 4.1,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew1/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-014",
+    "destination": "Dubai, UAE",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 2474,
+    "currency": "USD",
+    "durationDays": 4,
+    "rating": 4.2,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew2/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-015",
+    "destination": "Barcelona, Spain",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 2649,
+    "currency": "USD",
+    "durationDays": 5,
+    "rating": 4.3,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew3/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-016",
+    "destination": "Bali, Indonesia",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 2674,
+    "currency": "USD",
+    "durationDays": 6,
+    "rating": 4.4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew4/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-017",
+    "destination": "Tokyo, Japan",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 2849,
+    "currency": "USD",
+    "durationDays": 7,
+    "rating": 4.5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew5/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-018",
+    "destination": "Santorini, Greece",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 3024,
+    "currency": "USD",
+    "durationDays": 8,
+    "rating": 4.6,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew6/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-019",
+    "destination": "Marrakech, Morocco",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 3049,
+    "currency": "USD",
+    "durationDays": 9,
+    "rating": 4.7,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew7/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-020",
+    "destination": "Kyoto, Japan",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 3224,
+    "currency": "USD",
+    "durationDays": 10,
+    "rating": 4.8,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew8/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-021",
+    "destination": "Amalfi Coast, Italy",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 899,
+    "currency": "USD",
+    "durationDays": 11,
+    "rating": 4.9,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew9/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-022",
+    "destination": "Cape Town, South Africa",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 924,
+    "currency": "USD",
+    "durationDays": 12,
+    "rating": 5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew10/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-023",
+    "destination": "Reykjavik, Iceland",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 1099,
+    "currency": "USD",
+    "durationDays": 13,
+    "rating": 4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew11/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-024",
+    "destination": "Queenstown, New Zealand",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 1274,
+    "currency": "USD",
+    "durationDays": 14,
+    "rating": 4.1,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew12/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-025",
+    "destination": "Lisbon, Portugal",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 1299,
+    "currency": "USD",
+    "durationDays": 3,
+    "rating": 4.2,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew1/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-026",
+    "destination": "Maldives",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 1474,
+    "currency": "USD",
+    "durationDays": 4,
+    "rating": 4.3,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew2/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-027",
+    "destination": "Swiss Alps, Switzerland",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 1649,
+    "currency": "USD",
+    "durationDays": 5,
+    "rating": 4.4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew3/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-028",
+    "destination": "Tulum, Mexico",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 1674,
+    "currency": "USD",
+    "durationDays": 6,
+    "rating": 4.5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew4/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-029",
+    "destination": "Dubai, UAE",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 1849,
+    "currency": "USD",
+    "durationDays": 7,
+    "rating": 4.6,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew5/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-030",
+    "destination": "Barcelona, Spain",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 2024,
+    "currency": "USD",
+    "durationDays": 8,
+    "rating": 4.7,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew6/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-031",
+    "destination": "Bali, Indonesia",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 2049,
+    "currency": "USD",
+    "durationDays": 9,
+    "rating": 4.8,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew7/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-032",
+    "destination": "Tokyo, Japan",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 2224,
+    "currency": "USD",
+    "durationDays": 10,
+    "rating": 4.9,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew8/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-033",
+    "destination": "Santorini, Greece",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 2399,
+    "currency": "USD",
+    "durationDays": 11,
+    "rating": 5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew9/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-034",
+    "destination": "Marrakech, Morocco",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 2424,
+    "currency": "USD",
+    "durationDays": 12,
+    "rating": 4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew10/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-035",
+    "destination": "Kyoto, Japan",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 2599,
+    "currency": "USD",
+    "durationDays": 13,
+    "rating": 4.1,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew11/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-036",
+    "destination": "Amalfi Coast, Italy",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 2774,
+    "currency": "USD",
+    "durationDays": 14,
+    "rating": 4.2,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew12/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-037",
+    "destination": "Cape Town, South Africa",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 2799,
+    "currency": "USD",
+    "durationDays": 3,
+    "rating": 4.3,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew1/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-038",
+    "destination": "Reykjavik, Iceland",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 2974,
+    "currency": "USD",
+    "durationDays": 4,
+    "rating": 4.4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew2/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-039",
+    "destination": "Queenstown, New Zealand",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 3149,
+    "currency": "USD",
+    "durationDays": 5,
+    "rating": 4.5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew3/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-040",
+    "destination": "Lisbon, Portugal",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 3174,
+    "currency": "USD",
+    "durationDays": 6,
+    "rating": 4.6,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew4/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-041",
+    "destination": "Maldives",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 849,
+    "currency": "USD",
+    "durationDays": 7,
+    "rating": 4.7,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew5/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-042",
+    "destination": "Swiss Alps, Switzerland",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 1024,
+    "currency": "USD",
+    "durationDays": 8,
+    "rating": 4.8,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew6/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-043",
+    "destination": "Tulum, Mexico",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 1049,
+    "currency": "USD",
+    "durationDays": 9,
+    "rating": 4.9,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew7/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-044",
+    "destination": "Dubai, UAE",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 1224,
+    "currency": "USD",
+    "durationDays": 10,
+    "rating": 5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew8/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-045",
+    "destination": "Barcelona, Spain",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 1399,
+    "currency": "USD",
+    "durationDays": 11,
+    "rating": 4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew9/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-046",
+    "destination": "Bali, Indonesia",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 1424,
+    "currency": "USD",
+    "durationDays": 12,
+    "rating": 4.1,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew10/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-047",
+    "destination": "Tokyo, Japan",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 1599,
+    "currency": "USD",
+    "durationDays": 13,
+    "rating": 4.2,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew11/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-048",
+    "destination": "Santorini, Greece",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 1774,
+    "currency": "USD",
+    "durationDays": 14,
+    "rating": 4.3,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew12/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-049",
+    "destination": "Marrakech, Morocco",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 1799,
+    "currency": "USD",
+    "durationDays": 3,
+    "rating": 4.4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew1/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-050",
+    "destination": "Kyoto, Japan",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 1974,
+    "currency": "USD",
+    "durationDays": 4,
+    "rating": 4.5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew2/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-051",
+    "destination": "Amalfi Coast, Italy",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 2149,
+    "currency": "USD",
+    "durationDays": 5,
+    "rating": 4.6,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew3/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-052",
+    "destination": "Cape Town, South Africa",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 2174,
+    "currency": "USD",
+    "durationDays": 6,
+    "rating": 4.7,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew4/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-053",
+    "destination": "Reykjavik, Iceland",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 2349,
+    "currency": "USD",
+    "durationDays": 7,
+    "rating": 4.8,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew5/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-054",
+    "destination": "Queenstown, New Zealand",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 2524,
+    "currency": "USD",
+    "durationDays": 8,
+    "rating": 4.9,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew6/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-055",
+    "destination": "Lisbon, Portugal",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 2549,
+    "currency": "USD",
+    "durationDays": 9,
+    "rating": 5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew7/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-056",
+    "destination": "Maldives",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 2724,
+    "currency": "USD",
+    "durationDays": 10,
+    "rating": 4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew8/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-057",
+    "destination": "Swiss Alps, Switzerland",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 2899,
+    "currency": "USD",
+    "durationDays": 11,
+    "rating": 4.1,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew9/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-058",
+    "destination": "Tulum, Mexico",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 2924,
+    "currency": "USD",
+    "durationDays": 12,
+    "rating": 4.2,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew10/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-059",
+    "destination": "Dubai, UAE",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 3099,
+    "currency": "USD",
+    "durationDays": 13,
+    "rating": 4.3,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew11/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-060",
+    "destination": "Barcelona, Spain",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 3274,
+    "currency": "USD",
+    "durationDays": 14,
+    "rating": 4.4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew12/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-061",
+    "destination": "Bali, Indonesia",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 799,
+    "currency": "USD",
+    "durationDays": 3,
+    "rating": 4.5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew1/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-062",
+    "destination": "Tokyo, Japan",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 974,
+    "currency": "USD",
+    "durationDays": 4,
+    "rating": 4.6,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew2/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-063",
+    "destination": "Santorini, Greece",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 1149,
+    "currency": "USD",
+    "durationDays": 5,
+    "rating": 4.7,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew3/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-064",
+    "destination": "Marrakech, Morocco",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 1174,
+    "currency": "USD",
+    "durationDays": 6,
+    "rating": 4.8,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew4/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-065",
+    "destination": "Kyoto, Japan",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 1349,
+    "currency": "USD",
+    "durationDays": 7,
+    "rating": 4.9,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew5/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-066",
+    "destination": "Amalfi Coast, Italy",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 1524,
+    "currency": "USD",
+    "durationDays": 8,
+    "rating": 5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew6/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-067",
+    "destination": "Cape Town, South Africa",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 1549,
+    "currency": "USD",
+    "durationDays": 9,
+    "rating": 4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew7/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-068",
+    "destination": "Reykjavik, Iceland",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 1724,
+    "currency": "USD",
+    "durationDays": 10,
+    "rating": 4.1,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew8/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-069",
+    "destination": "Queenstown, New Zealand",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 1899,
+    "currency": "USD",
+    "durationDays": 11,
+    "rating": 4.2,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew9/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-070",
+    "destination": "Lisbon, Portugal",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 1924,
+    "currency": "USD",
+    "durationDays": 12,
+    "rating": 4.3,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew10/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-071",
+    "destination": "Maldives",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 2099,
+    "currency": "USD",
+    "durationDays": 13,
+    "rating": 4.4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew11/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-072",
+    "destination": "Swiss Alps, Switzerland",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 2274,
+    "currency": "USD",
+    "durationDays": 14,
+    "rating": 4.5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew12/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-073",
+    "destination": "Tulum, Mexico",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 2299,
+    "currency": "USD",
+    "durationDays": 3,
+    "rating": 4.6,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew1/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-074",
+    "destination": "Dubai, UAE",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 2474,
+    "currency": "USD",
+    "durationDays": 4,
+    "rating": 4.7,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew2/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-075",
+    "destination": "Barcelona, Spain",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 2649,
+    "currency": "USD",
+    "durationDays": 5,
+    "rating": 4.8,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew3/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-076",
+    "destination": "Bali, Indonesia",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 2674,
+    "currency": "USD",
+    "durationDays": 6,
+    "rating": 4.9,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew4/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-077",
+    "destination": "Tokyo, Japan",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 2849,
+    "currency": "USD",
+    "durationDays": 7,
+    "rating": 5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew5/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-078",
+    "destination": "Santorini, Greece",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 3024,
+    "currency": "USD",
+    "durationDays": 8,
+    "rating": 4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew6/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-079",
+    "destination": "Marrakech, Morocco",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 3049,
+    "currency": "USD",
+    "durationDays": 9,
+    "rating": 4.1,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew7/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-080",
+    "destination": "Kyoto, Japan",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 3224,
+    "currency": "USD",
+    "durationDays": 10,
+    "rating": 4.2,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew8/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-081",
+    "destination": "Amalfi Coast, Italy",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 899,
+    "currency": "USD",
+    "durationDays": 11,
+    "rating": 4.3,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew9/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-082",
+    "destination": "Cape Town, South Africa",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 924,
+    "currency": "USD",
+    "durationDays": 12,
+    "rating": 4.4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew10/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-083",
+    "destination": "Reykjavik, Iceland",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 1099,
+    "currency": "USD",
+    "durationDays": 13,
+    "rating": 4.5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew11/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-084",
+    "destination": "Queenstown, New Zealand",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 1274,
+    "currency": "USD",
+    "durationDays": 14,
+    "rating": 4.6,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew12/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-085",
+    "destination": "Lisbon, Portugal",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 1299,
+    "currency": "USD",
+    "durationDays": 3,
+    "rating": 4.7,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew1/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-086",
+    "destination": "Maldives",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 1474,
+    "currency": "USD",
+    "durationDays": 4,
+    "rating": 4.8,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew2/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-087",
+    "destination": "Swiss Alps, Switzerland",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 1649,
+    "currency": "USD",
+    "durationDays": 5,
+    "rating": 4.9,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew3/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-088",
+    "destination": "Tulum, Mexico",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 1674,
+    "currency": "USD",
+    "durationDays": 6,
+    "rating": 5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew4/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-089",
+    "destination": "Dubai, UAE",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 1849,
+    "currency": "USD",
+    "durationDays": 7,
+    "rating": 4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew5/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-090",
+    "destination": "Barcelona, Spain",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 2024,
+    "currency": "USD",
+    "durationDays": 8,
+    "rating": 4.1,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew6/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-091",
+    "destination": "Bali, Indonesia",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 2049,
+    "currency": "USD",
+    "durationDays": 9,
+    "rating": 4.2,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew7/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-092",
+    "destination": "Tokyo, Japan",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 2224,
+    "currency": "USD",
+    "durationDays": 10,
+    "rating": 4.3,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew8/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-093",
+    "destination": "Santorini, Greece",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 2399,
+    "currency": "USD",
+    "durationDays": 11,
+    "rating": 4.4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew9/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-094",
+    "destination": "Marrakech, Morocco",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 2424,
+    "currency": "USD",
+    "durationDays": 12,
+    "rating": 4.5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew10/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-095",
+    "destination": "Kyoto, Japan",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 2599,
+    "currency": "USD",
+    "durationDays": 13,
+    "rating": 4.6,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew11/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-096",
+    "destination": "Amalfi Coast, Italy",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 2774,
+    "currency": "USD",
+    "durationDays": 14,
+    "rating": 4.7,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew12/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-097",
+    "destination": "Cape Town, South Africa",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 2799,
+    "currency": "USD",
+    "durationDays": 3,
+    "rating": 4.8,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew1/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-098",
+    "destination": "Reykjavik, Iceland",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 2974,
+    "currency": "USD",
+    "durationDays": 4,
+    "rating": 4.9,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew2/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-099",
+    "destination": "Queenstown, New Zealand",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 3149,
+    "currency": "USD",
+    "durationDays": 5,
+    "rating": 5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew3/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-100",
+    "destination": "Lisbon, Portugal",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 3174,
+    "currency": "USD",
+    "durationDays": 6,
+    "rating": 4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew4/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-101",
+    "destination": "Maldives",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 849,
+    "currency": "USD",
+    "durationDays": 7,
+    "rating": 4.1,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew5/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-102",
+    "destination": "Swiss Alps, Switzerland",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 1024,
+    "currency": "USD",
+    "durationDays": 8,
+    "rating": 4.2,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew6/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-103",
+    "destination": "Tulum, Mexico",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 1049,
+    "currency": "USD",
+    "durationDays": 9,
+    "rating": 4.3,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew7/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-104",
+    "destination": "Dubai, UAE",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 1224,
+    "currency": "USD",
+    "durationDays": 10,
+    "rating": 4.4,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew8/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-105",
+    "destination": "Barcelona, Spain",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 1399,
+    "currency": "USD",
+    "durationDays": 11,
+    "rating": 4.5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew9/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 2,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 3,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  },
+  {
+    "id": "bundle-106",
+    "destination": "Bali, Indonesia",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 1424,
+    "currency": "USD",
+    "durationDays": 12,
+    "rating": 4.6,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew10/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 2,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 3,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 4,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-107",
+    "destination": "Tokyo, Japan",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 1599,
+    "currency": "USD",
+    "durationDays": 13,
+    "rating": 4.7,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew11/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      },
+      {
+        "day": 2,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 3,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      }
+    ]
+  },
+  {
+    "id": "bundle-108",
+    "destination": "Santorini, Greece",
+    "tripType": "experience",
+    "tripTypeLabel": "Experience",
+    "price": 1774,
+    "currency": "USD",
+    "durationDays": 14,
+    "rating": 4.8,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew12/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Departure",
+        "description": "Farewell breakfast",
+        "icon": "suitcase"
+      },
+      {
+        "day": 2,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 3,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 4,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-109",
+    "destination": "Marrakech, Morocco",
+    "tripType": "flight_stay",
+    "tripTypeLabel": "Flight + Stay",
+    "price": 1799,
+    "currency": "USD",
+    "durationDays": 3,
+    "rating": 4.9,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew1/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Arrival",
+        "description": "Land and settle in",
+        "icon": "airplane"
+      },
+      {
+        "day": 2,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 3,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      }
+    ]
+  },
+  {
+    "id": "bundle-110",
+    "destination": "Kyoto, Japan",
+    "tripType": "villa",
+    "tripTypeLabel": "Villa",
+    "price": 1974,
+    "currency": "USD",
+    "durationDays": 4,
+    "rating": 5,
+    "heroImage": {
+      "uri": "https://picsum.photos/seed/crew2/400/240",
+      "width": 400,
+      "height": 240
+    },
+    "itinerary": [
+      {
+        "day": 1,
+        "title": "Explore",
+        "description": "Guided city tour",
+        "icon": "map"
+      },
+      {
+        "day": 2,
+        "title": "Adventure",
+        "description": "Outdoor activity",
+        "icon": "figure.hiking"
+      },
+      {
+        "day": 3,
+        "title": "Culture",
+        "description": "Local food and markets",
+        "icon": "fork.knife"
+      },
+      {
+        "day": 4,
+        "title": "Relax",
+        "description": "Spa and beach time",
+        "icon": "beach.umbrella"
+      }
+    ]
+  }
+]
