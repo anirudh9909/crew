@@ -5,8 +5,9 @@ A React Native (Expo) travel discovery app with a high-performance feed, an **As
 ## Features
 
 - **Discover feed** — 100+ curated trip bundles rendered with `@shopify/flash-list`
-- **Ask Crew chat** — bottom sheet with half/full snap points, inverted message list, and mock streaming responses
-- **Perf overlay** — toggleable FPS / frame-drop monitor with scenario tagging (`feed_scroll`, `sheet_open`, etc.)
+- **Ask Crew chat** — `@gorhom/bottom-sheet` with half/full snap points, fixed header, `BottomSheetFlatList` message list, and mock streaming responses with simulated token delay
+- **Perf overlay** — toggleable FPS / frame-drop monitor with session p50/p95 frame times and scenario tagging (`feed_scroll`, `sheet_open`, etc.)
+- **Remote images** — hero images loaded from remote URLs via `expo-image` with blurhash placeholders and memory-disk caching
 - **Explore tab** — placeholder screen for saved trips
 
 ## Prerequisites
@@ -87,7 +88,7 @@ npm run generate-feed
 
 ## State management rationale
 
-This project intentionally avoids Redux, Zustand, or other global state libraries. State is scoped to where it is used, with three patterns chosen for performance and simplicity:
+This project intentionally avoids Redux, Zustand, or other global state libraries. State is scoped to where it is used, with four patterns chosen for performance and simplicity:
 
 ### 1. Colocated React state (`useState` + hooks)
 
@@ -97,9 +98,15 @@ This project intentionally avoids Redux, Zustand, or other global state librarie
 
 **Perf overlay (`PerfOverlayRoot`)** — overlay on/off is local state. When enabled, `usePerfMonitor` drives the display.
 
-### 2. React Context for sheet subtree wiring
+### 2. Split React Context for the chat sheet
 
-**`ChatSheetContext`** passes `onSend`, `isStreaming`, and `onInputFocus` from `AskCrewSheet` down to `ChatSheetFooter` / `ChatInput` without prop drilling through the bottom sheet's internal tree. Context carries *actions*, not the full message store — the hook remains the single source of truth for chat data.
+**`chat-sheet-context`** uses three providers so streaming tokens do not re-render the whole sheet:
+
+- **`ChatSheetActionsContext`** — stable `onSend` / `onInputFocus` callbacks
+- **`ChatSheetStreamingContext`** — `isStreaming` flag (footer updates on start/end only)
+- **`ChatSheetMessagesContext`** — message array (list subtree only)
+
+`ChatSheetChrome` (the `BottomSheet` wrapper) is memoized so it stays mounted while tokens stream; `useChat` remains the single source of truth for chat data.
 
 ### 3. External store for feed card expansion (`useSyncExternalStore`)
 
@@ -116,30 +123,33 @@ Expanded/collapsed card IDs are stored in a module-level `Set` with a lightweigh
 | Concern | Approach | Rationale |
 |---------|----------|-----------|
 | Chat messages | `useState` in `useChat` | Ephemeral, sheet-scoped |
-| Sheet actions | React Context | Avoid prop drilling in sheet subtree |
+| Sheet wiring | Split React Context | Isolate list/footer/shell re-renders during streaming |
 | Card expand/collapse | `useSyncExternalStore` + module store | Minimize FlashList re-renders |
 | Feed data | Static JSON import | No network; predictable perf testing |
+| Chat responses | Mock stream with artificial delay | Simulates loading/streaming without a backend |
 | Perf metrics | Reanimated shared values + singleton store | UI-thread sampling, throttled React updates |
 
 ## Testing the app
 
 After starting on a device or emulator:
 
-1. **Feed** — scroll the Discover list; cards expand/collapse on tap
-2. **Chat** — tap the **Ask Crew** FAB; sheet opens at half height; send a message and confirm mock streaming
-3. **Perf** — tap the **PERF** button (top-right); scroll and open the sheet; confirm FPS and scenario labels update
+1. **Feed** — scroll the Discover list; cards expand/collapse on tap; hero images load from remote URLs and cache on repeat scrolls
+2. **Chat** — tap the **Ask Crew** FAB; sheet opens at half height; drag to full; send a message and confirm mock streaming with a loading indicator; scroll message history while pinned or after streaming completes
+3. **Perf** — tap the **PERF** button (top-right) to enable the overlay; scroll the feed and open the chat sheet simultaneously; confirm FPS, drop count, scenario labels, and session p50/p95 update. Toggle PERF off and on to reset the session counter
 4. **Explore** — switch to the Explore tab; placeholder screen loads
+
+For methodology, bottleneck analysis, and recorded frame-time numbers, see [PERFORMANCE.md](./PERFORMANCE.md).
 
 ## Known limitations
 
 - **Mock chat only** — responses are generated locally in `mock-stream.ts`. There is no real LLM integration, conversation history persistence, or network error handling beyond the mock path.
-- **Static feed** — trip data is bundled JSON at build time. There is no pagination, pull-to-refresh, or API fetching.
+- **Static feed** — trip data is bundled JSON at build time. There is no pagination, pull-to-refresh, API fetching, or artificial feed load delay.
 - **Explore tab is a placeholder** — "Saved Trips" has no bookmarking or navigation yet.
 - **No persistence** — chat messages and expanded card state are in-memory only and reset when the app is restarted.
-- **Stream batching trade-off** — tokens are batched every 200 ms (`STREAM_BATCH_MS`) before React updates. This reduces jank during streaming but adds slight perceived latency versus unbatched updates.
+- **Stream batching trade-off** — tokens are batched every 200 ms (`STREAM_BATCH_MS` in `src/constants/stream-config.ts`) before React updates. This reduces jank during streaming but adds slight perceived latency versus unbatched updates. Set to `0` to compare the unbatched baseline.
 - **Perf overlay is approximate** — metrics are useful for relative comparison during development, not production-grade profiling. JS-thread busy detection uses a heartbeat heuristic and may not catch every stall.
 - **Platform differences** — bottom sheet keyboard behavior and safe-area insets are tuned primarily for iOS/Android; web support is best-effort.
-- **Half-snap scroll anchoring** — the chat list retries scroll-to-latest after snap animations; rapid sheet gestures may occasionally need a manual scroll nudge on slower devices.
+- **Chat auto-scroll** — new tokens scroll to the bottom only while you are pinned there; scrolling up disables auto-scroll until you return to the bottom. Opening the sheet from closed snaps the list to the latest message.
 
 ## Tech stack
 
@@ -147,6 +157,7 @@ After starting on a device or emulator:
 - [React Native 0.85](https://reactnative.dev/) + [React 19](https://react.dev/)
 - [@gorhom/bottom-sheet](https://gorhom.dev/react-native-bottom-sheet/) — chat sheet
 - [@shopify/flash-list](https://shopify.github.io/flash-list/) — virtualized feed
+- [expo-image](https://docs.expo.dev/versions/latest/sdk/image/) — remote image loading and caching
 - [react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/) — perf frame callbacks and sheet animations
 
 ## License
