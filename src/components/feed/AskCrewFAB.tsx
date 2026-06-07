@@ -1,5 +1,5 @@
 import { SymbolView } from 'expo-symbols';
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
 
@@ -12,7 +12,7 @@ type AskCrewFABProps = {
   visible?: boolean;
 };
 
-export function AskCrewFAB({ onPress, visible = true }: AskCrewFABProps) {
+function AskCrewFABComponent({ onPress, visible = true }: AskCrewFABProps) {
   const { fabBottom } = useScreenInsets();
   const opacity = useSharedValue(visible ? 1 : 0);
   const scale = useSharedValue(visible ? 1 : 0.9);
@@ -48,6 +48,8 @@ export function AskCrewFAB({ onPress, visible = true }: AskCrewFABProps) {
     </Animated.View>
   );
 }
+
+export const AskCrewFAB = memo(AskCrewFABComponent);
 
 const styles = StyleSheet.create({
   wrapper: {

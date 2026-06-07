@@ -1,10 +1,11 @@
+import { memo } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 import { useTheme } from '@/hooks/use-theme';
 
-export function StreamingIndicator() {
+function StreamingIndicatorComponent() {
   const theme = useTheme();
 
   return (
@@ -16,6 +17,8 @@ export function StreamingIndicator() {
     </View>
   );
 }
+
+export const StreamingIndicator = memo(StreamingIndicatorComponent);
 
 const styles = StyleSheet.create({
   container: {

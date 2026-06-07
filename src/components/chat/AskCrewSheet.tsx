@@ -6,21 +6,28 @@ import BottomSheet, {
 } from '@gorhom/bottom-sheet';
 import {
   forwardRef,
+  memo,
   useCallback,
   useEffect,
   useImperativeHandle,
   useMemo,
   useRef,
+  type RefObject,
 } from 'react';
 import {
-  InteractionManager,
   Platform,
   StyleSheet,
   View,
-  type LayoutChangeEvent,
+  type NativeScrollEvent,
+  type NativeSyntheticEvent,
 } from 'react-native';
 
-import { ChatSheetContext } from '@/components/chat/chat-sheet-context';
+import {
+  ChatSheetActionsContext,
+  ChatSheetMessagesContext,
+  ChatSheetStreamingContext,
+  useChatSheetMessages,
+} from '@/components/chat/chat-sheet-context';
 import { ChatBubble } from '@/components/chat/ChatBubble';
 import { ChatEmpty } from '@/components/chat/ChatEmpty';
 import { ChatHeader } from '@/components/chat/ChatHeader';
@@ -44,240 +51,374 @@ type AskCrewSheetProps = {
   onOpenChange?: (isOpen: boolean) => void;
 };
 
-/** Retries span the sheet open animation so scroll lands after layout. */
-const SCROLL_RETRY_MS = [50, 150, 300, 500, 800] as const;
-/** Extra retries when sheet settles at half — list height changes after snap. */
-const SCROLL_RETRY_HALF_MS = [50, 150, 300, 500, 800, 1200] as const;
+/** Delayed retries after sheet snap — list height settles after animation. */
+const SCROLL_RETRY_MS = [400] as const;
+const SCROLL_RETRY_HALF_MS = [400, 700] as const;
+const SCROLL_PIN_THRESHOLD = 48;
+
+const SNAP_POINTS = [SHEET_SNAP_HALF, SHEET_SNAP_FULL];
 
 const renderFooter = (props: BottomSheetFooterProps) => <ChatSheetFooter {...props} />;
+const renderListBottomSpacer = () => <View style={styles.listBottomSpacer} />;
 
-export const AskCrewSheet = forwardRef<AskCrewSheetRef, AskCrewSheetProps>(function AskCrewSheet(
-  { onOpenChange },
-  ref,
-) {
-  const theme = useTheme();
-  const sheetRef = useRef<BottomSheet>(null);
-  const listRef = useRef<BottomSheetFlatListMethods>(null);
-  const sheetIndexRef = useRef(-1);
-  const messagesRef = useRef<ChatMessage[]>([]);
-  const isStreamingRef = useRef(false);
-  const messageCountRef = useRef(0);
-  const scrollRetryTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+function distanceFromBottom(event: NativeScrollEvent) {
+  const { contentOffset, contentSize, layoutMeasurement } = event;
+  const maxOffset = Math.max(0, contentSize.height - layoutMeasurement.height);
+  return maxOffset - contentOffset.y;
+}
 
-  const { messages, sendMessage, isStreaming } = useChat();
-  const isEmpty = messages.length === 0;
-  /** Inverted list renders index 0 at the visual bottom — show newest first. */
-  const displayMessages = useMemo(() => [...messages].reverse(), [messages]);
-  const lastMessage = messages[messages.length - 1];
-  const streamAnchorKey = `${lastMessage?.id ?? ''}:${lastMessage?.content ?? ''}:${lastMessage?.status ?? ''}`;
-  messagesRef.current = messages;
-  isStreamingRef.current = isStreaming;
+type ChatMessageListProps = {
+  listRef: RefObject<BottomSheetFlatListMethods | null>;
+  messages: ChatMessage[];
+  onScrollEnd: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
+  onMomentumScrollBegin: () => void;
+  onMomentumScrollEnd: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
+};
 
-  const snapPoints = useMemo(() => [SHEET_SNAP_HALF, SHEET_SNAP_FULL], []);
-
-  const clearScrollRetries = useCallback(() => {
-    for (const timer of scrollRetryTimersRef.current) {
-      clearTimeout(timer);
-    }
-    scrollRetryTimersRef.current = [];
-  }, []);
-
-  /** Reversed + inverted: index 0 is newest — pin it to the bottom of the viewport. */
-  const scrollToLatest = useCallback(
-    (animated: boolean, withRetries = false, snapIndex?: number) => {
-      if (messagesRef.current.length === 0) return;
-
-      const performScroll = () => {
-        const list = listRef.current;
-        if (!list) return;
-        list.scrollToOffset({ offset: 0, animated });
-        list.scrollToIndex({ index: 0, animated, viewPosition: 1 });
-      };
-
-      performScroll();
-      requestAnimationFrame(performScroll);
-
-      const activeIndex = snapIndex ?? sheetIndexRef.current;
-      if (!withRetries || activeIndex < 0) return;
-
-      clearScrollRetries();
-      const delays = activeIndex === 0 ? SCROLL_RETRY_HALF_MS : SCROLL_RETRY_MS;
-
-      InteractionManager.runAfterInteractions(() => {
-        performScroll();
-        for (const delay of delays) {
-          scrollRetryTimersRef.current.push(setTimeout(performScroll, delay));
-        }
-      });
-    },
-    [clearScrollRetries],
-  );
-
-  useImperativeHandle(ref, () => ({
-    open: () => {
-      sheetRef.current?.snapToIndex(0);
-      scrollToLatest(false, true);
-    },
-    close: () => {
-      sheetRef.current?.close();
-    },
-  }));
-
-  useEffect(() => clearScrollRetries, [clearScrollRetries]);
-
-  const handleContentSizeChange = useCallback(() => {
-    if (messagesRef.current.length === 0 || sheetIndexRef.current < 0) return;
-    if (isStreamingRef.current || sheetIndexRef.current === 0) {
-      scrollToLatest(false, sheetIndexRef.current === 0);
-    }
-  }, [scrollToLatest]);
-
-  const handleScrollToIndexFailed = useCallback(
-    (info: { index: number; averageItemLength: number }) => {
-      listRef.current?.scrollToOffset({
-        offset: info.averageItemLength * info.index,
-        animated: false,
-      });
-      scrollToLatest(false, sheetIndexRef.current === 0);
-    },
-    [scrollToLatest],
-  );
-
-  const handleSend = useCallback(
-    (text: string) => {
-      sendMessage(text);
-      scrollToLatest(true, true);
-    },
-    [scrollToLatest, sendMessage],
-  );
-
-  const handleInputFocus = useCallback(() => {
-    sheetRef.current?.snapToIndex(1);
-  }, []);
-
-  const handleSheetChange = useCallback(
-    (index: number) => {
-      sheetIndexRef.current = index;
-      onOpenChange?.(index >= 0);
-      perf.mark('sheet_position', {
-        index,
-        snap: SHEET_SNAP_LABELS[index] ?? 'unknown',
-      });
-      if (index === -1) {
-        perf.tagScenario('sheet_close');
-        clearScrollRetries();
-      } else if (index === 0) {
-        perf.tagScenario('sheet_half');
-      } else if (index === 1) {
-        perf.tagScenario('sheet_full');
-      }
-      if (index >= 0 && messagesRef.current.length > 0) {
-        scrollToLatest(false, true);
-      }
-    },
-    [clearScrollRetries, onOpenChange, scrollToLatest],
-  );
-
-  const handleSheetAnimate = useCallback(
-    (_fromIndex: number, toIndex: number) => {
-      if (toIndex >= 0 && messagesRef.current.length > 0) {
-        scrollToLatest(false, true, toIndex);
-      }
-    },
-    [scrollToLatest],
-  );
-
-  useEffect(() => {
-    if (messages.length === messageCountRef.current) return;
-    messageCountRef.current = messages.length;
-    scrollToLatest(true, true);
-  }, [messages.length, scrollToLatest]);
-
-  useEffect(() => {
-    if (!isStreaming || messages.length === 0) return;
-    scrollToLatest(false);
-  }, [streamAnchorKey, isStreaming, messages.length, scrollToLatest]);
-
+const ChatMessageList = memo(function ChatMessageList({
+  listRef,
+  messages,
+  onScrollEnd,
+  onMomentumScrollBegin,
+  onMomentumScrollEnd,
+}: ChatMessageListProps) {
   const renderItem = useCallback(
-    ({ item }: { item: ChatMessage }) => <ChatBubble message={item} inverted />,
+    ({ item }: { item: ChatMessage }) => <ChatBubble message={item} />,
     [],
   );
 
   const keyExtractor = useCallback((item: ChatMessage) => item.id, []);
 
-  /** Inverted: ListHeaderComponent renders at the visual bottom (clearance above input). */
-  const renderListBottomSpacer = useCallback(
-    () => <View style={styles.listBottomSpacer} />,
-    [],
-  );
-
-  const handleListLayout = useCallback(
-    (_event: LayoutChangeEvent) => {
-      if (sheetIndexRef.current >= 0 && messagesRef.current.length > 0) {
-        scrollToLatest(false, sheetIndexRef.current === 0);
-      }
-    },
-    [scrollToLatest],
-  );
-
-  const chatContextValue = useMemo(
-    () => ({ onSend: handleSend, isStreaming, onInputFocus: handleInputFocus }),
-    [handleInputFocus, handleSend, isStreaming],
-  );
-
   return (
-    <ChatSheetContext.Provider value={chatContextValue}>
-      <BottomSheet
-        ref={sheetRef}
-        index={-1}
-        snapPoints={snapPoints}
-        enableDynamicSizing={false}
-        enablePanDownToClose
-        enableOverDrag={false}
-        animateOnMount={false}
-        keyboardBehavior="extend"
-        keyboardBlurBehavior="none"
-        android_keyboardInputMode="adjustResize"
-        footerComponent={renderFooter}
-        onChange={handleSheetChange}
-        onAnimate={handleSheetAnimate}
-        backgroundStyle={[styles.sheetBackground, { backgroundColor: theme.background }]}
-        handleIndicatorStyle={{ backgroundColor: theme.sheetHandle }}>
-        {isEmpty ? (
-          <BottomSheetView style={[styles.emptyShell, { backgroundColor: theme.background }]}>
-            <ChatHeader />
-            <View style={styles.emptyBody}>
-              <ChatEmpty />
-            </View>
-          </BottomSheetView>
-        ) : (
-          <>
-            <BottomSheetView style={[styles.headerShell, { backgroundColor: theme.background }]}>
-              <ChatHeader />
-            </BottomSheetView>
-            <BottomSheetFlatList
-            ref={listRef}
-            style={styles.list}
-            inverted
-            data={displayMessages}
-            extraData={streamAnchorKey}
-            renderItem={renderItem}
-            keyExtractor={keyExtractor}
-            ListHeaderComponent={renderListBottomSpacer}
-            contentContainerStyle={styles.listContentMessages}
-            onLayout={handleListLayout}
-            onContentSizeChange={handleContentSizeChange}
-            onScrollToIndexFailed={handleScrollToIndexFailed}
-            keyboardShouldPersistTaps="always"
-            keyboardDismissMode="none"
-            showsVerticalScrollIndicator={false}
-          />
-          </>
-        )}
-      </BottomSheet>
-    </ChatSheetContext.Provider>
+    <BottomSheetFlatList
+      ref={listRef}
+      style={styles.list}
+      data={messages}
+      renderItem={renderItem}
+      keyExtractor={keyExtractor}
+      ListFooterComponent={renderListBottomSpacer}
+      contentContainerStyle={styles.listContentMessages}
+      enableFooterMarginAdjustment
+      nestedScrollEnabled={Platform.OS === 'android'}
+      initialNumToRender={12}
+      maxToRenderPerBatch={6}
+      windowSize={9}
+      updateCellsBatchingPeriod={50}
+      removeClippedSubviews={Platform.OS === 'android'}
+      onScrollEndDrag={onScrollEnd}
+      onMomentumScrollBegin={onMomentumScrollBegin}
+      onMomentumScrollEnd={onMomentumScrollEnd}
+      keyboardShouldPersistTaps="always"
+      keyboardDismissMode="none"
+      showsVerticalScrollIndicator={false}
+    />
   );
 });
+
+type ChatSheetContentProps = {
+  listRef: RefObject<BottomSheetFlatListMethods | null>;
+  backgroundColor: string;
+  onScrollEnd: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
+  onMomentumScrollBegin: () => void;
+  onMomentumScrollEnd: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
+};
+
+/** Subscribes to messages — only this subtree re-renders during streaming. */
+const ChatSheetContent = memo(function ChatSheetContent({
+  listRef,
+  backgroundColor,
+  onScrollEnd,
+  onMomentumScrollBegin,
+  onMomentumScrollEnd,
+}: ChatSheetContentProps) {
+  const messages = useChatSheetMessages();
+
+  if (messages.length === 0) {
+    return (
+      <BottomSheetView style={[styles.emptyShell, { backgroundColor }]}>
+        <ChatHeader />
+        <View style={styles.emptyBody}>
+          <ChatEmpty />
+        </View>
+      </BottomSheetView>
+    );
+  }
+
+  return (
+    <View style={styles.messageShell}>
+      <View style={[styles.headerShell, { backgroundColor }]}>
+        <ChatHeader />
+      </View>
+      <ChatMessageList
+        listRef={listRef}
+        messages={messages}
+        onScrollEnd={onScrollEnd}
+        onMomentumScrollBegin={onMomentumScrollBegin}
+        onMomentumScrollEnd={onMomentumScrollEnd}
+      />
+    </View>
+  );
+});
+
+type ChatSheetChromeProps = {
+  sheetRef: RefObject<BottomSheet | null>;
+  listRef: RefObject<BottomSheetFlatListMethods | null>;
+  backgroundColor: string;
+  handleColor: string;
+  onSheetChange: (index: number) => void;
+  onScrollEnd: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
+  onMomentumScrollBegin: () => void;
+  onMomentumScrollEnd: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
+};
+
+/** Bottom sheet shell — memoized so token streaming does not re-render the sheet. */
+const ChatSheetChrome = memo(function ChatSheetChrome({
+  sheetRef,
+  listRef,
+  backgroundColor,
+  handleColor,
+  onSheetChange,
+  onScrollEnd,
+  onMomentumScrollBegin,
+  onMomentumScrollEnd,
+}: ChatSheetChromeProps) {
+  const backgroundStyle = useMemo(
+    () => [styles.sheetBackground, { backgroundColor }],
+    [backgroundColor],
+  );
+  const handleIndicatorStyle = useMemo(() => ({ backgroundColor: handleColor }), [handleColor]);
+
+  return (
+    <BottomSheet
+      ref={sheetRef}
+      index={-1}
+      snapPoints={SNAP_POINTS}
+      enableDynamicSizing={false}
+      enablePanDownToClose
+      enableOverDrag={false}
+      animateOnMount={false}
+      keyboardBehavior="extend"
+      keyboardBlurBehavior="none"
+      android_keyboardInputMode="adjustResize"
+      footerComponent={renderFooter}
+      onChange={onSheetChange}
+      backgroundStyle={backgroundStyle}
+      handleIndicatorStyle={handleIndicatorStyle}>
+      <ChatSheetContent
+        listRef={listRef}
+        backgroundColor={backgroundColor}
+        onScrollEnd={onScrollEnd}
+        onMomentumScrollBegin={onMomentumScrollBegin}
+        onMomentumScrollEnd={onMomentumScrollEnd}
+      />
+    </BottomSheet>
+  );
+});
+
+type ChatSheetControllerProps = {
+  onOpenChange?: (isOpen: boolean) => void;
+};
+
+/**
+ * Owns chat state and scroll logic. Context splits limit re-renders:
+ * - messages context → list subtree
+ * - streaming context → footer only
+ * - actions context → stable callbacks
+ */
+const ChatSheetController = forwardRef<AskCrewSheetRef, ChatSheetControllerProps>(
+  function ChatSheetController({ onOpenChange }, ref) {
+    const theme = useTheme();
+    const sheetRef = useRef<BottomSheet>(null);
+    const listRef = useRef<BottomSheetFlatListMethods>(null);
+    const sheetIndexRef = useRef(-1);
+    const prevSheetIndexRef = useRef(-1);
+    const messagesRef = useRef<ChatMessage[]>([]);
+    const isPinnedToBottomRef = useRef(true);
+    const isUserScrollingRef = useRef(false);
+    const scrollRafRef = useRef<number | null>(null);
+    const scrollRetryTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
+    const lastStreamScrollKeyRef = useRef('');
+
+    const { messages, sendMessage, isStreaming } = useChat();
+    const lastMessage = messages[messages.length - 1];
+    const streamScrollKey = lastMessage
+      ? `${lastMessage.id}:${lastMessage.content.length}:${lastMessage.status ?? ''}`
+      : '';
+    messagesRef.current = messages;
+
+    const clearScrollRetries = useCallback(() => {
+      for (const timer of scrollRetryTimersRef.current) {
+        clearTimeout(timer);
+      }
+      scrollRetryTimersRef.current = [];
+    }, []);
+
+    const cancelScheduledScroll = useCallback(() => {
+      if (scrollRafRef.current !== null) {
+        cancelAnimationFrame(scrollRafRef.current);
+        scrollRafRef.current = null;
+      }
+    }, []);
+
+    const scheduleScrollToBottom = useCallback(
+      (animated: boolean, force = false) => {
+        if (messagesRef.current.length === 0) return;
+        if (isUserScrollingRef.current) return;
+        if (!force && !isPinnedToBottomRef.current) return;
+
+        cancelScheduledScroll();
+        scrollRafRef.current = requestAnimationFrame(() => {
+          scrollRafRef.current = null;
+          listRef.current?.scrollToEnd({ animated });
+        });
+      },
+      [cancelScheduledScroll],
+    );
+
+    /** Layout-settle retries only — never forces scroll when user is reading history. */
+    const scheduleScrollRetries = useCallback(
+      (snapIndex: number, { immediate = false, force = false } = {}) => {
+        clearScrollRetries();
+        if (immediate) {
+          scheduleScrollToBottom(false, force);
+        }
+        const delays = snapIndex === 0 ? SCROLL_RETRY_HALF_MS : SCROLL_RETRY_MS;
+        for (const delay of delays) {
+          scrollRetryTimersRef.current.push(
+            setTimeout(() => scheduleScrollToBottom(false, false), delay),
+          );
+        }
+      },
+      [clearScrollRetries, scheduleScrollToBottom],
+    );
+
+    useImperativeHandle(ref, () => ({
+      open: () => {
+        isPinnedToBottomRef.current = true;
+        isUserScrollingRef.current = false;
+        clearScrollRetries();
+        sheetRef.current?.snapToIndex(0);
+      },
+      close: () => {
+        sheetRef.current?.close();
+      },
+    }));
+
+    useEffect(() => {
+      return () => {
+        clearScrollRetries();
+        cancelScheduledScroll();
+      };
+    }, [cancelScheduledScroll, clearScrollRetries]);
+
+    const updatePinnedFromOffset = useCallback((event: NativeScrollEvent) => {
+      isPinnedToBottomRef.current = distanceFromBottom(event) <= SCROLL_PIN_THRESHOLD;
+    }, []);
+
+    const handleMomentumScrollBegin = useCallback(() => {
+      isUserScrollingRef.current = true;
+    }, []);
+
+    const handleScrollEnd = useCallback(
+      (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+        isUserScrollingRef.current = false;
+        updatePinnedFromOffset(event.nativeEvent);
+      },
+      [updatePinnedFromOffset],
+    );
+
+    const handleSend = useCallback(
+      (text: string) => {
+        clearScrollRetries();
+        cancelScheduledScroll();
+        isPinnedToBottomRef.current = true;
+        isUserScrollingRef.current = false;
+        sendMessage(text);
+      },
+      [cancelScheduledScroll, clearScrollRetries, sendMessage],
+    );
+
+    const handleInputFocus = useCallback(() => {
+      sheetRef.current?.snapToIndex(1);
+    }, []);
+
+    const handleSheetChange = useCallback(
+      (index: number) => {
+        const prevIndex = prevSheetIndexRef.current;
+        prevSheetIndexRef.current = index;
+        sheetIndexRef.current = index;
+        onOpenChange?.(index >= 0);
+        perf.mark('sheet_position', {
+          index,
+          snap: SHEET_SNAP_LABELS[index] ?? 'unknown',
+        });
+        if (index === -1) {
+          perf.tagScenario('sheet_close');
+          clearScrollRetries();
+          cancelScheduledScroll();
+        } else if (index === 0) {
+          perf.tagScenario('sheet_half');
+        } else if (index === 1) {
+          perf.tagScenario('sheet_full');
+        }
+
+        if (index < 0 || messagesRef.current.length === 0) return;
+
+        const openedFromClosed = prevIndex === -1;
+        if (openedFromClosed) {
+          isPinnedToBottomRef.current = true;
+          isUserScrollingRef.current = false;
+          scheduleScrollRetries(index, { immediate: true, force: true });
+          return;
+        }
+
+        if (isPinnedToBottomRef.current && !isUserScrollingRef.current) {
+          scheduleScrollRetries(index);
+        }
+      },
+      [cancelScheduledScroll, clearScrollRetries, onOpenChange, scheduleScrollRetries],
+    );
+
+    useEffect(() => {
+      if (!isStreaming) {
+        lastStreamScrollKeyRef.current = '';
+        return;
+      }
+      if (!streamScrollKey || streamScrollKey === lastStreamScrollKeyRef.current) {
+        return;
+      }
+      lastStreamScrollKeyRef.current = streamScrollKey;
+      clearScrollRetries();
+      scheduleScrollToBottom(false);
+    }, [clearScrollRetries, isStreaming, scheduleScrollToBottom, streamScrollKey]);
+
+    const actionsValue = useMemo(
+      () => ({ onSend: handleSend, onInputFocus: handleInputFocus }),
+      [handleInputFocus, handleSend],
+    );
+
+    return (
+      <ChatSheetActionsContext.Provider value={actionsValue}>
+        <ChatSheetStreamingContext.Provider value={isStreaming}>
+          <ChatSheetMessagesContext.Provider value={messages}>
+            <ChatSheetChrome
+              sheetRef={sheetRef}
+              listRef={listRef}
+              backgroundColor={theme.background}
+              handleColor={theme.sheetHandle}
+              onSheetChange={handleSheetChange}
+              onScrollEnd={handleScrollEnd}
+              onMomentumScrollBegin={handleMomentumScrollBegin}
+              onMomentumScrollEnd={handleScrollEnd}
+            />
+          </ChatSheetMessagesContext.Provider>
+        </ChatSheetStreamingContext.Provider>
+      </ChatSheetActionsContext.Provider>
+    );
+  },
+);
+
+export const AskCrewSheet = ChatSheetController;
 
 const styles = StyleSheet.create({
   sheetBackground: {
@@ -295,9 +436,6 @@ const styles = StyleSheet.create({
       },
     }),
   },
-  headerShell: {
-    zIndex: 2,
-  },
   emptyShell: {
     flex: 1,
   },
@@ -309,8 +447,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.four,
     paddingBottom: CHAT_LIST_BOTTOM_SPACER,
   },
+  messageShell: {
+    flex: 1,
+    minHeight: 0,
+  },
+  headerShell: {
+    zIndex: 2,
+  },
   list: {
     flex: 1,
+    minHeight: 0,
   },
   listContentMessages: {
     paddingTop: Spacing.one,

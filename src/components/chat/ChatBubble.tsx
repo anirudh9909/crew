@@ -8,10 +8,9 @@ import { useTheme } from '@/hooks/use-theme';
 
 type ChatBubbleProps = {
   message: ChatMessage;
-  inverted?: boolean;
 };
 
-function ChatBubbleComponent({ message, inverted = false }: ChatBubbleProps) {
+function ChatBubbleComponent({ message }: ChatBubbleProps) {
   const theme = useTheme();
   const isUser = message.role === 'user';
 
@@ -19,12 +18,7 @@ function ChatBubbleComponent({ message, inverted = false }: ChatBubbleProps) {
   const textColor = isUser ? '#FFFFFF' : theme.text;
 
   return (
-    <View
-      style={[
-        styles.row,
-        inverted ? styles.rowInverted : styles.rowNormal,
-        isUser ? styles.userRow : styles.assistantRow,
-      ]}>
+    <View style={[styles.row, isUser ? styles.userRow : styles.assistantRow]}>
       <View style={[styles.bubble, { backgroundColor: bubbleColor }]}>
         {message.status === 'loading' ? (
           <StreamingIndicator />
@@ -38,7 +32,6 @@ function ChatBubbleComponent({ message, inverted = false }: ChatBubbleProps) {
 
 function propsAreEqual(prev: ChatBubbleProps, next: ChatBubbleProps) {
   return (
-    prev.inverted === next.inverted &&
     prev.message.id === next.message.id &&
     prev.message.content === next.message.content &&
     prev.message.status === next.message.status &&
@@ -51,12 +44,7 @@ export const ChatBubble = memo(ChatBubbleComponent, propsAreEqual);
 const styles = StyleSheet.create({
   row: {
     paddingHorizontal: Spacing.three,
-  },
-  rowNormal: {
     marginBottom: Spacing.two,
-  },
-  rowInverted: {
-    marginTop: Spacing.two,
   },
   userRow: {
     alignItems: 'flex-end',

@@ -1,6 +1,6 @@
 import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 import { SymbolView } from 'expo-symbols';
-import { useCallback, useRef, type ComponentRef } from 'react';
+import { memo, useCallback, useRef, type ComponentRef } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import { CHAT_FOOTER_HEIGHT, CHAT_INPUT_HEIGHT } from '@/constants/chat-layout';
@@ -15,7 +15,7 @@ type ChatInputProps = {
   sendDisabled?: boolean;
 };
 
-export function ChatInput({ value, onChangeText, onSend, onFocus, sendDisabled }: ChatInputProps) {
+function ChatInputComponent({ value, onChangeText, onSend, onFocus, sendDisabled }: ChatInputProps) {
   const theme = useTheme();
   const inputRef = useRef<ComponentRef<typeof BottomSheetTextInput>>(null);
 
@@ -80,6 +80,8 @@ export function ChatInput({ value, onChangeText, onSend, onFocus, sendDisabled }
     </View>
   );
 }
+
+export const ChatInput = memo(ChatInputComponent);
 
 const styles = StyleSheet.create({
   container: {

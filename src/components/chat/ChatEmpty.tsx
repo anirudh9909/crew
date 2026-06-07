@@ -1,9 +1,10 @@
+import { memo } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
 
-export function ChatEmpty() {
+function ChatEmptyComponent() {
   return (
     <View style={styles.empty}>
       <ThemedText type="smallBold">Ask Crew anything</ThemedText>
@@ -13,6 +14,8 @@ export function ChatEmpty() {
     </View>
   );
 }
+
+export const ChatEmpty = memo(ChatEmptyComponent);
 
 const styles = StyleSheet.create({
   empty: {

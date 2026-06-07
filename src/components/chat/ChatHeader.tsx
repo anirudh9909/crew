@@ -1,9 +1,9 @@
+import { memo } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
 import { Spacing } from '@/constants/theme';
-
-export function ChatHeader() {
+function ChatHeaderComponent() {
   return (
     <View style={styles.header}>
       <ThemedText type="smallBold" style={styles.title}>
@@ -15,6 +15,8 @@ export function ChatHeader() {
     </View>
   );
 }
+
+export const ChatHeader = memo(ChatHeaderComponent);
 
 const styles = StyleSheet.create({
   header: {
