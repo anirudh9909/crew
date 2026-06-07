@@ -21,16 +21,6 @@ export const perf = {
     perf.mark(name, meta);
   },
 
-  measure(name: string, startMark: string, meta?: PerfMeta) {
-    const start = marks.get(startMark);
-    if (start === undefined) return;
-    const duration = Date.now() - start;
-    if (__DEV__) {
-      console.log(`[perf] ${name}: ${duration}ms`, meta ?? '');
-    }
-    return duration;
-  },
-
   /** Tag the active interaction scenario for overlay correlation. */
   tagScenario(name: string, meta?: PerfMeta) {
     activeScenario = name;

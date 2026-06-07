@@ -1,5 +1,5 @@
 import { FlashList } from '@shopify/flash-list';
-import { memo, useCallback, useEffect, useRef } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import { FeedCard } from '@/components/feed/FeedCard';
@@ -19,16 +19,10 @@ function FeedListComponent({ data }: FeedListProps) {
   const theme = useTheme();
   const { headerTop, feedListBottom } = useScreenInsets();
   const { expandedCount, toggleExpanded, isExpanded } = useExpandedCardsStore();
-  const renderCount = useRef(0);
 
   useEffect(() => {
     perf.markOnce('feed_mount', { itemCount: data.length });
   }, [data.length]);
-
-  if (__DEV__) {
-    renderCount.current += 1;
-    console.log(`[perf] FeedList render #${renderCount.current}`);
-  }
 
   const renderItem = useCallback(
     ({ item }: { item: TravelBundle }) => (

@@ -37,6 +37,10 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+# local perf captures
+perf-*.log
+perf-sessions*.json
+
 example
 
 # generated native folders
