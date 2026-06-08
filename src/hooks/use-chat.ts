@@ -121,5 +121,13 @@ export function useChat() {
     [appendAssistantContent, finalizeAssistant, isStreaming],
   );
 
-  return { messages, sendMessage, isStreaming };
+  const cancelStream = useCallback(() => {
+    cancelRef.current?.();
+    cancelRef.current = null;
+    batcherRef.current?.cancel();
+    batcherRef.current = null;
+    setIsStreaming(false);
+  }, []);
+
+  return { messages, sendMessage, isStreaming, cancelStream };
 }

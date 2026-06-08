@@ -1,7 +1,6 @@
-import { BottomSheetTextInput } from '@gorhom/bottom-sheet';
 import { SymbolView } from 'expo-symbols';
-import { memo, useCallback, useRef, type ComponentRef } from 'react';
-import { Pressable, StyleSheet, View } from 'react-native';
+import { memo, useCallback } from 'react';
+import { Pressable, StyleSheet, TextInput, View } from 'react-native';
 
 import { CHAT_FOOTER_HEIGHT, CHAT_INPUT_HEIGHT } from '@/constants/chat-layout';
 import { CardRadius, Spacing } from '@/constants/theme';
@@ -17,20 +16,11 @@ type ChatInputProps = {
 
 function ChatInputComponent({ value, onChangeText, onSend, onFocus, sendDisabled }: ChatInputProps) {
   const theme = useTheme();
-  const inputRef = useRef<ComponentRef<typeof BottomSheetTextInput>>(null);
-
-  const refocusInput = useCallback(() => {
-    const focus = () => inputRef.current?.focus();
-    requestAnimationFrame(focus);
-    setTimeout(focus, 50);
-    setTimeout(focus, 200);
-  }, []);
 
   const handleSend = useCallback(() => {
     if (sendDisabled || !value.trim()) return;
     onSend();
-    refocusInput();
-  }, [onSend, refocusInput, sendDisabled, value]);
+  }, [onSend, sendDisabled, value]);
 
   return (
     <View
@@ -42,8 +32,7 @@ function ChatInputComponent({ value, onChangeText, onSend, onFocus, sendDisabled
           minHeight: CHAT_FOOTER_HEIGHT,
         },
       ]}>
-      <BottomSheetTextInput
-        ref={inputRef}
+      <TextInput
         style={[
           styles.input,
           { color: theme.text, backgroundColor: theme.backgroundElement, height: CHAT_INPUT_HEIGHT },
@@ -54,7 +43,6 @@ function ChatInputComponent({ value, onChangeText, onSend, onFocus, sendDisabled
         onChangeText={onChangeText}
         onFocus={onFocus}
         multiline={false}
-        scrollEnabled={false}
         returnKeyType="send"
         onSubmitEditing={handleSend}
         blurOnSubmit={false}

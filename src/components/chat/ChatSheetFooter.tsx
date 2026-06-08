@@ -1,10 +1,10 @@
-import { BottomSheetFooter, type BottomSheetFooterProps } from '@gorhom/bottom-sheet';
 import { memo, useCallback, useState } from 'react';
 
 import { useChatSheetActions, useChatSheetStreaming } from '@/components/chat/chat-sheet-context';
 import { ChatInput } from '@/components/chat/ChatInput';
-function ChatSheetFooterComponent(props: BottomSheetFooterProps) {
-  const { onSend, onInputFocus } = useChatSheetActions();
+
+function ChatSheetFooterComponent() {
+  const { onSend } = useChatSheetActions();
   const isStreaming = useChatSheetStreaming();
   const [input, setInput] = useState('');
 
@@ -16,15 +16,12 @@ function ChatSheetFooterComponent(props: BottomSheetFooterProps) {
   }, [input, isStreaming, onSend]);
 
   return (
-    <BottomSheetFooter {...props}>
-      <ChatInput
-        value={input}
-        onChangeText={setInput}
-        onSend={handleSend}
-        onFocus={onInputFocus}
-        sendDisabled={isStreaming}
-      />
-    </BottomSheetFooter>
+    <ChatInput
+      value={input}
+      onChangeText={setInput}
+      onSend={handleSend}
+      sendDisabled={isStreaming}
+    />
   );
 }
 

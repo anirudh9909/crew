@@ -1,9 +1,3 @@
-import BottomSheet, {
-  BottomSheetFlatList,
-  BottomSheetView,
-  type BottomSheetFlatListMethods,
-  type BottomSheetFooterProps,
-} from '@gorhom/bottom-sheet';
 import {
   forwardRef,
   memo,
@@ -12,9 +6,13 @@ import {
   useImperativeHandle,
   useMemo,
   useRef,
+  useState,
   type RefObject,
 } from 'react';
 import {
+  FlatList,
+  Keyboard,
+  KeyboardAvoidingView,
   Platform,
   StyleSheet,
   View,
@@ -32,12 +30,12 @@ import { ChatBubble } from '@/components/chat/ChatBubble';
 import { ChatEmpty } from '@/components/chat/ChatEmpty';
 import { ChatHeader } from '@/components/chat/ChatHeader';
 import { ChatSheetFooter } from '@/components/chat/ChatSheetFooter';
+import { CrewSheet, type CrewSheetRef, type CrewSheetSnapIndex } from '@/components/chat/CrewSheet';
 import {
   CHAT_LIST_BOTTOM_SPACER,
-  SHEET_SNAP_FULL,
-  SHEET_SNAP_HALF,
+  CHAT_STREAM_SCROLL_ANIMATED,
 } from '@/constants/chat-layout';
-import { CardRadius, Spacing } from '@/constants/theme';
+import { Spacing } from '@/constants/theme';
 import { useChat, type ChatMessage } from '@/hooks/use-chat';
 import { useTheme } from '@/hooks/use-theme';
 import { perf, SHEET_SNAP_LABELS } from '@/utils/perf';
@@ -51,14 +49,10 @@ type AskCrewSheetProps = {
   onOpenChange?: (isOpen: boolean) => void;
 };
 
-/** Delayed retries after sheet snap — list height settles after animation. */
 const SCROLL_RETRY_MS = [400] as const;
 const SCROLL_RETRY_HALF_MS = [400, 700] as const;
 const SCROLL_PIN_THRESHOLD = 48;
 
-const SNAP_POINTS = [SHEET_SNAP_HALF, SHEET_SNAP_FULL];
-
-const renderFooter = (props: BottomSheetFooterProps) => <ChatSheetFooter {...props} />;
 const renderListBottomSpacer = () => <View style={styles.listBottomSpacer} />;
 
 function distanceFromBottom(event: NativeScrollEvent) {
@@ -67,9 +61,13 @@ function distanceFromBottom(event: NativeScrollEvent) {
   return maxOffset - contentOffset.y;
 }
 
+type MessageFlatList = FlatList<ChatMessage>;
+
 type ChatMessageListProps = {
-  listRef: RefObject<BottomSheetFlatListMethods | null>;
+  listRef: RefObject<MessageFlatList | null>;
   messages: ChatMessage[];
+  onContentSizeChange: () => void;
+  onScrollBeginDrag: () => void;
   onScrollEnd: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
   onMomentumScrollBegin: () => void;
   onMomentumScrollEnd: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
@@ -78,6 +76,8 @@ type ChatMessageListProps = {
 const ChatMessageList = memo(function ChatMessageList({
   listRef,
   messages,
+  onContentSizeChange,
+  onScrollBeginDrag,
   onScrollEnd,
   onMomentumScrollBegin,
   onMomentumScrollEnd,
@@ -90,7 +90,8 @@ const ChatMessageList = memo(function ChatMessageList({
   const keyExtractor = useCallback((item: ChatMessage) => item.id, []);
 
   return (
-    <BottomSheetFlatList
+    <FlatList
+      // @ts-expect-error React 19 passes ref as a prop; RN types omit it.
       ref={listRef}
       style={styles.list}
       data={messages}
@@ -98,152 +99,99 @@ const ChatMessageList = memo(function ChatMessageList({
       keyExtractor={keyExtractor}
       ListFooterComponent={renderListBottomSpacer}
       contentContainerStyle={styles.listContentMessages}
-      enableFooterMarginAdjustment
-      nestedScrollEnabled={Platform.OS === 'android'}
-      initialNumToRender={12}
+      initialNumToRender={8}
       maxToRenderPerBatch={6}
-      windowSize={9}
-      updateCellsBatchingPeriod={50}
-      removeClippedSubviews={Platform.OS === 'android'}
+      windowSize={7}
+      updateCellsBatchingPeriod={16}
+      removeClippedSubviews={false}
+      onContentSizeChange={onContentSizeChange}
+      onScrollBeginDrag={onScrollBeginDrag}
       onScrollEndDrag={onScrollEnd}
       onMomentumScrollBegin={onMomentumScrollBegin}
       onMomentumScrollEnd={onMomentumScrollEnd}
-      keyboardShouldPersistTaps="always"
+      keyboardShouldPersistTaps="handled"
       keyboardDismissMode="none"
       showsVerticalScrollIndicator={false}
     />
   );
 });
 
-type ChatSheetContentProps = {
-  listRef: RefObject<BottomSheetFlatListMethods | null>;
+type ChatSheetBodyProps = {
+  listRef: RefObject<MessageFlatList | null>;
   backgroundColor: string;
+  onContentSizeChange: () => void;
+  onScrollBeginDrag: () => void;
   onScrollEnd: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
   onMomentumScrollBegin: () => void;
   onMomentumScrollEnd: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
 };
 
-/** Subscribes to messages — only this subtree re-renders during streaming. */
-const ChatSheetContent = memo(function ChatSheetContent({
+const ChatSheetBody = memo(function ChatSheetBody({
   listRef,
   backgroundColor,
+  onContentSizeChange,
+  onScrollBeginDrag,
   onScrollEnd,
   onMomentumScrollBegin,
   onMomentumScrollEnd,
-}: ChatSheetContentProps) {
+}: ChatSheetBodyProps) {
   const messages = useChatSheetMessages();
 
-  if (messages.length === 0) {
-    return (
-      <BottomSheetView style={[styles.emptyShell, { backgroundColor }]}>
-        <ChatHeader />
-        <View style={styles.emptyBody}>
-          <ChatEmpty />
-        </View>
-      </BottomSheetView>
-    );
-  }
-
   return (
-    <View style={styles.messageShell}>
-      <View style={[styles.headerShell, { backgroundColor }]}>
-        <ChatHeader />
+    <View style={styles.bodyRoot}>
+      <View style={styles.contentRegion}>
+        {messages.length === 0 ? (
+          <View style={[styles.emptyShell, { backgroundColor }]}>
+            <ChatHeader />
+            <View style={styles.emptyBody}>
+              <ChatEmpty />
+            </View>
+          </View>
+        ) : (
+          <View style={styles.messageShell}>
+            <View style={[styles.headerShell, { backgroundColor }]}>
+              <ChatHeader />
+            </View>
+            <ChatMessageList
+              listRef={listRef}
+              messages={messages}
+              onContentSizeChange={onContentSizeChange}
+              onScrollBeginDrag={onScrollBeginDrag}
+              onScrollEnd={onScrollEnd}
+              onMomentumScrollBegin={onMomentumScrollBegin}
+              onMomentumScrollEnd={onMomentumScrollEnd}
+            />
+          </View>
+        )}
       </View>
-      <ChatMessageList
-        listRef={listRef}
-        messages={messages}
-        onScrollEnd={onScrollEnd}
-        onMomentumScrollBegin={onMomentumScrollBegin}
-        onMomentumScrollEnd={onMomentumScrollEnd}
-      />
+      <View style={styles.footerShell}>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+          keyboardVerticalOffset={0}>
+          <ChatSheetFooter />
+        </KeyboardAvoidingView>
+      </View>
     </View>
   );
 });
 
-type ChatSheetChromeProps = {
-  sheetRef: RefObject<BottomSheet | null>;
-  listRef: RefObject<BottomSheetFlatListMethods | null>;
-  backgroundColor: string;
-  handleColor: string;
-  onSheetChange: (index: number) => void;
-  onScrollEnd: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
-  onMomentumScrollBegin: () => void;
-  onMomentumScrollEnd: (event: NativeSyntheticEvent<NativeScrollEvent>) => void;
-};
-
-/** Bottom sheet shell — memoized so token streaming does not re-render the sheet. */
-const ChatSheetChrome = memo(function ChatSheetChrome({
-  sheetRef,
-  listRef,
-  backgroundColor,
-  handleColor,
-  onSheetChange,
-  onScrollEnd,
-  onMomentumScrollBegin,
-  onMomentumScrollEnd,
-}: ChatSheetChromeProps) {
-  const backgroundStyle = useMemo(
-    () => [styles.sheetBackground, { backgroundColor }],
-    [backgroundColor],
-  );
-  const handleIndicatorStyle = useMemo(() => ({ backgroundColor: handleColor }), [handleColor]);
-
-  return (
-    <BottomSheet
-      ref={sheetRef}
-      index={-1}
-      snapPoints={SNAP_POINTS}
-      enableDynamicSizing={false}
-      enablePanDownToClose
-      enableOverDrag={false}
-      animateOnMount={false}
-      keyboardBehavior="extend"
-      keyboardBlurBehavior="none"
-      android_keyboardInputMode="adjustResize"
-      footerComponent={renderFooter}
-      onChange={onSheetChange}
-      backgroundStyle={backgroundStyle}
-      handleIndicatorStyle={handleIndicatorStyle}>
-      <ChatSheetContent
-        listRef={listRef}
-        backgroundColor={backgroundColor}
-        onScrollEnd={onScrollEnd}
-        onMomentumScrollBegin={onMomentumScrollBegin}
-        onMomentumScrollEnd={onMomentumScrollEnd}
-      />
-    </BottomSheet>
-  );
-});
-
-type ChatSheetControllerProps = {
-  onOpenChange?: (isOpen: boolean) => void;
-};
-
-/**
- * Owns chat state and scroll logic. Context splits limit re-renders:
- * - messages context → list subtree
- * - streaming context → footer only
- * - actions context → stable callbacks
- */
-const ChatSheetController = forwardRef<AskCrewSheetRef, ChatSheetControllerProps>(
+const ChatSheetController = forwardRef<AskCrewSheetRef, AskCrewSheetProps>(
   function ChatSheetController({ onOpenChange }, ref) {
     const theme = useTheme();
-    const sheetRef = useRef<BottomSheet>(null);
-    const listRef = useRef<BottomSheetFlatListMethods>(null);
-    const sheetIndexRef = useRef(-1);
-    const prevSheetIndexRef = useRef(-1);
+    const sheetRef = useRef<CrewSheetRef>(null);
+    const listRef = useRef<MessageFlatList>(null);
+    const sheetIndexRef = useRef<CrewSheetSnapIndex>(-1);
+    const prevSheetIndexRef = useRef<CrewSheetSnapIndex>(-1);
     const messagesRef = useRef<ChatMessage[]>([]);
     const isPinnedToBottomRef = useRef(true);
     const isUserScrollingRef = useRef(false);
     const scrollRafRef = useRef<number | null>(null);
     const scrollRetryTimersRef = useRef<ReturnType<typeof setTimeout>[]>([]);
-    const lastStreamScrollKeyRef = useRef('');
+    const isStreamingRef = useRef(false);
+    const [sheetUiMounted, setSheetUiMounted] = useState(false);
 
-    const { messages, sendMessage, isStreaming } = useChat();
-    const lastMessage = messages[messages.length - 1];
-    const streamScrollKey = lastMessage
-      ? `${lastMessage.id}:${lastMessage.content.length}:${lastMessage.status ?? ''}`
-      : '';
+    const { messages, sendMessage, isStreaming, cancelStream } = useChat();
+    isStreamingRef.current = isStreaming;
     messagesRef.current = messages;
 
     const clearScrollRetries = useCallback(() => {
@@ -268,16 +216,26 @@ const ChatSheetController = forwardRef<AskCrewSheetRef, ChatSheetControllerProps
 
         cancelScheduledScroll();
         scrollRafRef.current = requestAnimationFrame(() => {
-          scrollRafRef.current = null;
-          listRef.current?.scrollToEnd({ animated });
+          scrollRafRef.current = requestAnimationFrame(() => {
+            scrollRafRef.current = null;
+            listRef.current?.scrollToEnd({ animated });
+          });
         });
       },
       [cancelScheduledScroll],
     );
 
-    /** Layout-settle retries only — never forces scroll when user is reading history. */
+    const handleContentSizeChange = useCallback(() => {
+      if (messagesRef.current.length === 0) return;
+      if (isUserScrollingRef.current) return;
+      if (!isPinnedToBottomRef.current) return;
+
+      const animated = isStreamingRef.current && CHAT_STREAM_SCROLL_ANIMATED;
+      scheduleScrollToBottom(animated);
+    }, [scheduleScrollToBottom]);
+
     const scheduleScrollRetries = useCallback(
-      (snapIndex: number, { immediate = false, force = false } = {}) => {
+      (snapIndex: CrewSheetSnapIndex, { immediate = false, force = false } = {}) => {
         clearScrollRetries();
         if (immediate) {
           scheduleScrollToBottom(false, force);
@@ -297,7 +255,9 @@ const ChatSheetController = forwardRef<AskCrewSheetRef, ChatSheetControllerProps
         isPinnedToBottomRef.current = true;
         isUserScrollingRef.current = false;
         clearScrollRetries();
-        sheetRef.current?.snapToIndex(0);
+        setSheetUiMounted(true);
+        onOpenChange?.(true);
+        sheetRef.current?.open();
       },
       close: () => {
         sheetRef.current?.close();
@@ -315,8 +275,14 @@ const ChatSheetController = forwardRef<AskCrewSheetRef, ChatSheetControllerProps
       isPinnedToBottomRef.current = distanceFromBottom(event) <= SCROLL_PIN_THRESHOLD;
     }, []);
 
+    const handleScrollBeginDrag = useCallback(() => {
+      isUserScrollingRef.current = true;
+      perf.tagScenario('chat_scroll');
+    }, []);
+
     const handleMomentumScrollBegin = useCallback(() => {
       isUserScrollingRef.current = true;
+      perf.tagScenario('chat_scroll');
     }, []);
 
     const handleScrollEnd = useCallback(
@@ -334,19 +300,24 @@ const ChatSheetController = forwardRef<AskCrewSheetRef, ChatSheetControllerProps
         isPinnedToBottomRef.current = true;
         isUserScrollingRef.current = false;
         sendMessage(text);
+        scheduleScrollToBottom(true, true);
       },
-      [cancelScheduledScroll, clearScrollRetries, sendMessage],
+      [cancelScheduledScroll, clearScrollRetries, scheduleScrollToBottom, sendMessage],
     );
 
-    const handleInputFocus = useCallback(() => {
-      sheetRef.current?.snapToIndex(1);
-    }, []);
+    const stopSheetWork = useCallback(() => {
+      cancelStream();
+      Keyboard.dismiss();
+      clearScrollRetries();
+      cancelScheduledScroll();
+    }, [cancelScheduledScroll, cancelStream, clearScrollRetries]);
 
-    const handleSheetChange = useCallback(
-      (index: number) => {
+    const handleSnapChange = useCallback(
+      (index: CrewSheetSnapIndex) => {
         const prevIndex = prevSheetIndexRef.current;
         prevSheetIndexRef.current = index;
         sheetIndexRef.current = index;
+        setSheetUiMounted(index >= 0);
         onOpenChange?.(index >= 0);
         perf.mark('sheet_position', {
           index,
@@ -354,8 +325,6 @@ const ChatSheetController = forwardRef<AskCrewSheetRef, ChatSheetControllerProps
         });
         if (index === -1) {
           perf.tagScenario('sheet_close');
-          clearScrollRetries();
-          cancelScheduledScroll();
         } else if (index === 0) {
           perf.tagScenario('sheet_half');
         } else if (index === 1) {
@@ -376,41 +345,36 @@ const ChatSheetController = forwardRef<AskCrewSheetRef, ChatSheetControllerProps
           scheduleScrollRetries(index);
         }
       },
-      [cancelScheduledScroll, clearScrollRetries, onOpenChange, scheduleScrollRetries],
+      [onOpenChange, scheduleScrollRetries],
     );
 
-    useEffect(() => {
-      if (!isStreaming) {
-        lastStreamScrollKeyRef.current = '';
-        return;
-      }
-      if (!streamScrollKey || streamScrollKey === lastStreamScrollKeyRef.current) {
-        return;
-      }
-      lastStreamScrollKeyRef.current = streamScrollKey;
-      clearScrollRetries();
-      scheduleScrollToBottom(false);
-    }, [clearScrollRetries, isStreaming, scheduleScrollToBottom, streamScrollKey]);
-
     const actionsValue = useMemo(
-      () => ({ onSend: handleSend, onInputFocus: handleInputFocus }),
-      [handleInputFocus, handleSend],
+      () => ({ onSend: handleSend }),
+      [handleSend],
     );
 
     return (
       <ChatSheetActionsContext.Provider value={actionsValue}>
         <ChatSheetStreamingContext.Provider value={isStreaming}>
           <ChatSheetMessagesContext.Provider value={messages}>
-            <ChatSheetChrome
-              sheetRef={sheetRef}
-              listRef={listRef}
+            <CrewSheet
+              ref={sheetRef}
               backgroundColor={theme.background}
               handleColor={theme.sheetHandle}
-              onSheetChange={handleSheetChange}
-              onScrollEnd={handleScrollEnd}
-              onMomentumScrollBegin={handleMomentumScrollBegin}
-              onMomentumScrollEnd={handleScrollEnd}
-            />
+              onSnapChange={handleSnapChange}
+              onCloseStart={stopSheetWork}>
+              {sheetUiMounted ? (
+                <ChatSheetBody
+                  listRef={listRef}
+                  backgroundColor={theme.background}
+                  onContentSizeChange={handleContentSizeChange}
+                  onScrollBeginDrag={handleScrollBeginDrag}
+                  onScrollEnd={handleScrollEnd}
+                  onMomentumScrollBegin={handleMomentumScrollBegin}
+                  onMomentumScrollEnd={handleScrollEnd}
+                />
+              ) : null}
+            </CrewSheet>
           </ChatSheetMessagesContext.Provider>
         </ChatSheetStreamingContext.Provider>
       </ChatSheetActionsContext.Provider>
@@ -421,23 +385,21 @@ const ChatSheetController = forwardRef<AskCrewSheetRef, ChatSheetControllerProps
 export const AskCrewSheet = ChatSheetController;
 
 const styles = StyleSheet.create({
-  sheetBackground: {
-    borderTopLeftRadius: CardRadius * 2,
-    borderTopRightRadius: CardRadius * 2,
-    ...Platform.select({
-      ios: {
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: -6 },
-        shadowOpacity: 0.14,
-        shadowRadius: 14,
-      },
-      android: {
-        elevation: 16,
-      },
-    }),
+  bodyRoot: {
+    flex: 1,
+    minHeight: 0,
+  },
+  contentRegion: {
+    flex: 1,
+    flexShrink: 1,
+    minHeight: 0,
+  },
+  footerShell: {
+    flexShrink: 0,
   },
   emptyShell: {
     flex: 1,
+    minHeight: 0,
   },
   emptyBody: {
     flex: 1,
@@ -445,7 +407,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: Spacing.four,
-    paddingBottom: CHAT_LIST_BOTTOM_SPACER,
   },
   messageShell: {
     flex: 1,

@@ -24,7 +24,7 @@ export default function DiscoverScreen() {
 
   return (
     <View style={styles.container}>
-      <FeedList data={bundles} />
+      <FeedList data={bundles} scrollEnabled={!isSheetOpen} />
       <AskCrewFAB onPress={openSheet} visible={!isSheetOpen} />
       <AskCrewSheet ref={sheetRef} onOpenChange={handleSheetOpenChange} />
     </View>

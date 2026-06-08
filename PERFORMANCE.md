@@ -59,7 +59,7 @@ Feature code calls `perf.tagScenario()` at interaction boundaries (`feed_scroll`
 
 ### Problem
 
-When the Ask Crew bottom sheet was open and mock tokens streamed in, **every token triggered a React state update** that propagated through a single chat context provider. The entire sheet subtree — header, `BottomSheet` chrome, footer, and input — re-rendered on each token alongside the message list.
+When the Ask Crew bottom sheet was open and mock tokens streamed in, **every token triggered a React state update** that propagated through a single chat context provider. The entire sheet subtree — header, sheet chrome, footer, and input — re-rendered on each token alongside the message list.
 
 With the feed still mounted and composited behind the sheet, this produced visible jank: the overlay logged **96 frame drops** in a combined feed + chat session while the sheet sat at half height (`sheet_half` scenario).
 
@@ -70,15 +70,15 @@ With the feed still mounted and composited behind the sheet, this produced visib
 Three changes, applied together:
 
 1. **Split React Context** (`chat-sheet-context.tsx`) — three providers isolate re-render scope:
-   - `ChatSheetActionsContext` — stable `onSend` / `onInputFocus` (never changes during streaming)
+   - `ChatSheetActionsContext` — stable `onSend` callback (never changes during streaming)
    - `ChatSheetStreamingContext` — `isStreaming` boolean (updates only on start/end)
    - `ChatSheetMessagesContext` — message array (only the list subtree subscribes)
 
-2. **Memoized sheet chrome** — `ChatSheetChrome` (`BottomSheet` wrapper) is wrapped in `memo` so snap animations and backdrop do not re-render per token.
+2. **Memoized sheet body** — `ChatSheetBody`, `ChatMessageList`, and footer components are wrapped in `memo` so list rows update without re-rendering chrome.
 
 3. **Token batching** — `STREAM_BATCH_MS = 200` in `stream-config.ts` batches streamed characters before calling `setMessages`, reducing React commit frequency from ~60/s to ~5/s during active streaming.
 
-4. **`BottomSheetFlatList`** — replaced a hand-rolled scroll container with Gorhom's list primitive for correct nested-scroll gesture handling (commit `703469f`).
+4. **Custom `CrewSheet`** — replaced `@gorhom/bottom-sheet` with a Reanimated height panel so snap animations stay on the UI thread and nested scroll uses a standard `FlatList`.
 
 ### Before / after evidence
 
@@ -97,6 +97,41 @@ Three changes, applied together:
 The drop count improvement is the primary signal: median and p95 frame times were already at the 60 fps ceiling (16.7 ms) in both sessions, but the unoptimized sheet caused **5.6× more dropped frames** under combined usage. After the fix, sustained feed scrolling with the overlay active stays near 60 fps with only occasional outliers (worst frame 83.3 ms, likely image decode or list recycle).
 
 **How to reproduce:** enable the PERF overlay, scroll the Discover feed continuously for 60+ seconds, then open Ask Crew and send a message while observing drops. Compare by temporarily reverting `STREAM_BATCH_MS` to `0` and collapsing the three contexts back into one provider.
+
+---
+
+## Custom bottom sheet (`CrewSheet`) — open/close and snap evidence
+
+Gorhom `@gorhom/bottom-sheet` was replaced with a lightweight **`CrewSheet`** (`src/components/chat/CrewSheet.tsx`) — Reanimated height animation from the bottom, Gesture Handler pan on the handle, and snap heights measured from the tab content area via `onLayout` (50% half / 90% full).
+
+### Observed behaviour (Android, Expo dev build)
+
+| Interaction | Frame drops | Notes |
+|-------------|-------------|-------|
+| Sheet **open** (closed → 50%) | **0** | Height animates on UI thread; no perceptible stutter |
+| Sheet **close** (any snap → closed) | **0** | Backdrop tap or handle drag; feed re-enabled after animation completes |
+| Snap **50% → 90%** (handle drag up) | **Slight** (~2–5 in session) | Re-layout of chat list + panel height change; worst frame ~35 ms |
+| Sustained **`sheet_full`** + streaming | Stable | See capture below |
+
+Open and close stay at 60 fps because only `animatedHeight` changes on the UI thread — no JS commits during the 280 ms timing curve (`SHEET_ANIMATION_MS`). The half → full transition is heavier: the panel grows 40% taller while the `FlatList` and footer re-measure, which produces a small burst of dropped frames. This is acceptable for a user-initiated drag that happens once per session, not on every token.
+
+### Capture — `sheet_full` with chat streaming
+
+Recorded after several open/close cycles and one half → full drag; overlay tagged `sheet_full`:
+
+| Stat | Value |
+|------|-------|
+| Live FPS | 65.1 |
+| Frame drops (session total) | **5** |
+| p50 frame time | 16.7 ms |
+| p95 frame time | 16.7 ms |
+| Worst frame | 34.6 ms |
+| Session frames | 3,888 |
+| JS thread | OK |
+
+![Custom CrewSheet at full snap — 5 session drops, sheet_full](./assets/perf/custom-sheet-full.png)
+
+**How to reproduce:** enable PERF, open Ask Crew (half), drag handle to full (`sheet_full`), send a message and observe streaming. Reset the overlay (toggle PERF off/on) before comparing open/close vs snap so drop counts are isolated per scenario.
 
 ---
 
@@ -137,7 +172,8 @@ A secondary trade-off lives in `SESSION_SAMPLE_CAP = 12000`: the ring buffer cap
 | Requirement | Result |
 |-------------|--------|
 | FPS methodology | Reanimated UI-thread `useFrameCallback`, 60 Hz sampling, 8 Hz overlay |
-| Bottleneck + fix | Chat sheet per-token re-renders → split context + batching + `BottomSheetFlatList` |
+| Bottleneck + fix | Chat sheet per-token re-renders → split context + batching + custom `CrewSheet` |
 | Before/after evidence | 96 → 17 frame drops (−82%) under comparable session lengths |
+| Custom sheet snaps | 0 drops open/close; slight drops on 50% → 90% drag (~5 session total at `sheet_full`) |
 | 60s scroll p50 / p95 | **16.7 ms / 16.7 ms** |
 | Trade-off | 200 ms stream batching — fewer renders, slightly chunkier text |

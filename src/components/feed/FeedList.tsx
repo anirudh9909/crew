@@ -13,9 +13,10 @@ import { perf } from '@/utils/perf';
 
 type FeedListProps = {
   data: TravelBundle[];
+  scrollEnabled?: boolean;
 };
 
-function FeedListComponent({ data }: FeedListProps) {
+function FeedListComponent({ data, scrollEnabled = true }: FeedListProps) {
   const theme = useTheme();
   const { headerTop, feedListBottom } = useScreenInsets();
   const { expandedCount, toggleExpanded, isExpanded } = useExpandedCardsStore();
@@ -62,6 +63,7 @@ function FeedListComponent({ data }: FeedListProps) {
         keyExtractor={keyExtractor}
         getItemType={getItemType}
         extraData={expandedCount}
+        scrollEnabled={scrollEnabled}
         drawDistance={250}
         onScrollBeginDrag={handleScrollBeginDrag}
         onMomentumScrollEnd={handleScrollEnd}

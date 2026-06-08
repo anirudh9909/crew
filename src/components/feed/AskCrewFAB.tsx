@@ -18,8 +18,10 @@ function AskCrewFABComponent({ onPress, visible = true }: AskCrewFABProps) {
   const scale = useSharedValue(visible ? 1 : 0.9);
 
   useEffect(() => {
-    opacity.value = withTiming(visible ? 1 : 0, { duration: 200 });
-    scale.value = withTiming(visible ? 1 : 0.9, { duration: 200 });
+    // Hide instantly when sheet opens to avoid overlapping Reanimated work with the sheet.
+    const duration = visible ? 200 : 0;
+    opacity.value = withTiming(visible ? 1 : 0, { duration });
+    scale.value = withTiming(visible ? 1 : 0.9, { duration });
   }, [opacity, scale, visible]);
 
   const animatedStyle = useAnimatedStyle(() => ({

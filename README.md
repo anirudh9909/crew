@@ -5,7 +5,7 @@ A React Native (Expo) travel discovery app with a high-performance feed, an **As
 ## Features
 
 - **Discover feed** — 100+ curated trip bundles rendered with `@shopify/flash-list`
-- **Ask Crew chat** — `@gorhom/bottom-sheet` with half/full snap points, fixed header, `BottomSheetFlatList` message list, and mock streaming responses with simulated token delay
+- **Ask Crew chat** — custom Reanimated bottom sheet with half/full snap points, fixed header, `FlatList` message list, and mock streaming responses with simulated token delay
 - **Perf overlay** — toggleable FPS / frame-drop monitor with session p50/p95 frame times and scenario tagging (`feed_scroll`, `sheet_open`, etc.)
 - **Remote images** — hero images loaded from remote URLs via `expo-image` with blurhash placeholders and memory-disk caching
 - **Explore tab** — placeholder screen for saved trips
@@ -110,7 +110,7 @@ This project intentionally avoids Redux, Zustand, or other global state librarie
 - **`ChatSheetStreamingContext`** — `isStreaming` flag (footer updates on start/end only)
 - **`ChatSheetMessagesContext`** — message array (list subtree only)
 
-`ChatSheetChrome` (the `BottomSheet` wrapper) is memoized so it stays mounted while tokens stream; `useChat` remains the single source of truth for chat data.
+`CrewSheet` (custom Reanimated panel) keeps animations on the UI thread; `useChat` remains the single source of truth for chat data.
 
 ### 3. External store for feed card expansion (`useSyncExternalStore`)
 
@@ -186,7 +186,7 @@ Static before/after perf screenshots are included in [assets/perf/](assets/perf/
 
 - [Expo SDK 56](https://docs.expo.dev/) + [Expo Router](https://docs.expo.dev/router/introduction/)
 - [React Native 0.85](https://reactnative.dev/) + [React 19](https://react.dev/)
-- [@gorhom/bottom-sheet](https://gorhom.dev/react-native-bottom-sheet/) — chat sheet
+- Custom `CrewSheet` (Reanimated + Gesture Handler) — lightweight chat bottom sheet
 - [@shopify/flash-list](https://shopify.github.io/flash-list/) — virtualized feed
 - [expo-image](https://docs.expo.dev/versions/latest/sdk/image/) — remote image loading and caching
 - [react-native-reanimated](https://docs.swmansion.com/react-native-reanimated/) — perf frame callbacks and sheet animations
