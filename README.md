@@ -64,8 +64,10 @@ src/
 ├── services/            # Mock streaming
 ├── constants/           # Layout, theme, stream/perf tuning
 ├── data/feed.json       # Static feed dataset
-└── utils/               # Perf instrumentation, stream batching
+└── utils/               # Perf instrumentation, stream batching (+ *.test.ts)
 ```
+
+Colocated `*.test.ts` files live next to the modules they cover.
 
 ## Regenerating feed data
 
@@ -84,6 +86,8 @@ npm run generate-feed
 | `npm run ios` | Start and open on iOS |
 | `npm run web` | Start and open in browser |
 | `npm run lint` | Run ESLint |
+| `npm test` | Run unit tests (Jest) |
+| `npm run test:watch` | Run unit tests in watch mode |
 | `npm run generate-feed` | Regenerate `src/data/feed.json` |
 
 ## State management rationale
@@ -139,6 +143,33 @@ After starting on a device or emulator:
 4. **Explore** — switch to the Explore tab; placeholder screen loads
 
 For methodology, bottleneck analysis, and recorded frame-time numbers, see [PERFORMANCE.md](./PERFORMANCE.md).
+
+### Unit tests
+
+Pure-logic tests cover perf sampling, stream batching, mock chat streaming, and feed data contracts. No device or native mocks required.
+
+```bash
+npm test
+```
+
+| Test file | Covers |
+|-----------|--------|
+| `src/utils/perf-frame-store.test.ts` | Drop counting, p50/p95, ring buffer |
+| `src/utils/stream-batch.test.ts` | Token batching, flush, cancel |
+| `src/services/mock-stream.test.ts` | Mock token emission and cancellation |
+| `src/data/feed.test.ts` | ≥100 bundles, remote image URLs |
+
+## Demo
+
+**Screen recording:** _[Add your 2–3 minute video URL here]_
+
+Record on a device or simulator showing all of the following **at the same time**:
+
+1. PERF overlay enabled (FPS, drops, session p50/p95 visible)
+2. Discover feed scrolling continuously
+3. Ask Crew sheet open — send a message and show mock streaming
+
+Static before/after perf screenshots are included in [assets/perf/](assets/perf/) and documented in [PERFORMANCE.md](./PERFORMANCE.md).
 
 ## Known limitations
 
