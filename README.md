@@ -159,18 +159,6 @@ npm test
 | `src/services/mock-stream.test.ts` | Mock token emission and cancellation |
 | `src/data/feed.test.ts` | ≥100 bundles, remote image URLs |
 
-## Demo
-
-**Screen recording:** _[Add your 2–3 minute video URL here]_
-
-Record on a device or simulator showing all of the following **at the same time**:
-
-1. PERF overlay enabled (FPS, drops, session p50/p95 visible)
-2. Discover feed scrolling continuously
-3. Ask Crew sheet open — send a message and show mock streaming
-
-Static before/after perf screenshots are included in [assets/perf/](assets/perf/) and documented in [PERFORMANCE.md](./PERFORMANCE.md).
-
 ## Known limitations
 
 - **Mock chat only** — responses are generated locally in `mock-stream.ts`. There is no real LLM integration, conversation history persistence, or network error handling beyond the mock path.
